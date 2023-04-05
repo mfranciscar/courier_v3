@@ -15,14 +15,16 @@ void mousePressed(){
     rb2.setEnabled(true);
     rb3.setEnabled(true);
     pantalla = PANTALLA.LOG_IN;
+    
   }
   
   else if(rb2.mouseOverButton() && rb2.enabled){
     rb2.setEnabled(false);
     rb1.setEnabled(true);
     rb3.setEnabled(true);
-    pantalla = PANTALLA.ADD_MOVIE;
+    pantalla = PANTALLA.ADD_BUTTON;
   }
+  
   else if(rb3.mouseOverButton() && rb3.enabled){
     rb3.setEnabled(false);
     rb2.setEnabled(true);
@@ -50,6 +52,14 @@ void mousePressed(){
     selectInput("Selecciona una imatge ...", "fileSelected");
   }
   
+  if(pantalla_addLista.mouseOverButton() && pantalla_addLista.enabled){
+    pantalla = PANTALLA.ADD_LISTA;
+  }
+  
+  if(pantalla_addMovie.mouseOverButton() && pantalla_addMovie.enabled){
+    bgColor = color(255, 0, 0);
+    pantalla = PANTALLA.ADD_MOVIE;
+  }
   
   userText.isPressed();
   passwordText.isPressed();
@@ -67,7 +77,7 @@ void mousePressed(){
   
   
    if(crearMovie.mouseOverButton() && crearMovie.enabled){
-     println("molbe");
+
      // Agafar els valors dels camps del formulari
      String valorYear = String.valueOf(anys.getValue());
      String valorNom = addNameMovie.getValue();

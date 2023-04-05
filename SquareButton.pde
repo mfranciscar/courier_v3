@@ -29,6 +29,7 @@ class SquareButton {
    this.enabled = b;
  }
  
+ 
  // Dibuixa el botó
  void display(){
    pushStyle();
@@ -42,7 +43,7 @@ class SquareButton {
      fill(fillColor);          // Color actiu però ratolí fora
    }
    noStroke();        //Color i gruixa del contorn
-   rectMode(CENTER);
+   rectMode(CENTER); strokeWeight(2); stroke(getFirstColor()); 
    rect(this.x, this.y, this.w, this.h, 10);   // Rectangle del botó
    
    textAlign(CENTER); textFont(getFontAt(1)); fill(getFirstColor()); textSize(18);

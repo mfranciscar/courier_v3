@@ -1,6 +1,6 @@
 Button b1;
 RoundButton rb1, rb2, rb3;
-SquareButton logIn, crearLista, crearMovie, portada;
+SquareButton logIn, crearLista, crearMovie, portada, pantalla_addLista, pantalla_addMovie;
 color bgColor = 0;
 PImage img, img1, icona1, icona2, icona3, icona4;
 Counter anys;
@@ -82,6 +82,9 @@ void setGUI(){
   img1 = loadImage("seven.png");
   peli = new Card(info1);
   peli.setImage(img1);
+  
+  pantalla_addLista = new SquareButton("Crear lista", width/2+450, 135, 200, 35);
+  pantalla_addMovie = new SquareButton("Añadir película", width/2+450, 170, 200, 35);
   
   popStyle();
   

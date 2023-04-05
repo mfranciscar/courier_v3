@@ -52,7 +52,7 @@ class TextArea {
    void updateLines(){
      if(text.length()>0){
        int numLines = constrain(text.length() / numCols, 0, this.numRows-1);
-       //println("NUM LINES: "+numLines);
+    
        for(int i=0; i<=numLines; i++){
            int start = i*numCols;
            int end = min(text.length(), (i+1)*numCols);

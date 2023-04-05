@@ -13,12 +13,17 @@ void dibujaPantallaLogIn(){
   text("CONTRASEÑA:", width/2-250, height/2+105);
   
   if(pantalla == PANTALLA.LOG_IN){
+    portada.setEnabled(false);
     userText.display();
     passwordText.display();
     logIn.display();
     userText.isPressed();
     passwordText.isPressed();
+    
+    pantalla_addLista.setEnabled(false);
+    pantalla_addMovie.setEnabled(false);
     popStyle();
+
   }
   
 }
@@ -35,6 +40,27 @@ void dibujaPantallaInicio(){
     c.display();
     updateCursor();
     //peli.display(100,100,500,300,1);
+    
+  }
+  
+}
+
+void dibujaPantallaAddButton(){
+  
+  if(pantalla == PANTALLA.ADD_BUTTON){
+    
+    portada.setEnabled(false);
+    p.setVisible(false);
+    cercador.display();
+    c.display();
+    pantalla_addLista.display();
+    pantalla_addMovie.display();
+    
+    pantalla_addLista.setEnabled(true);
+    pantalla_addMovie.setEnabled(true);
+    updateCursor();
+
+      
   }
   
 }
