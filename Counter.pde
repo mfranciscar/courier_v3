@@ -52,7 +52,7 @@ class Counter {
    rect(this.x, this.y, this.w + 2*this.h, this.h, 5);   // Rectangle del botó
    
    fill(0); textFont(getFontAt(2)); textSize(20); textAlign(LEFT);
-   text(value, 765, height/2+50);
+   text(value, 765, height/2+60);
    
    // Icona del botó
    fill(getThirdColor()); noStroke();
@@ -66,7 +66,7 @@ class Counter {
  }
  
  void resetValue(){
-   this.value = this.minValue;
+   this.value = 2000;
  }
  
  boolean mouseOverButtons(){

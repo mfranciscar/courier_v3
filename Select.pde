@@ -96,4 +96,7 @@ class Select {
    return selectedValue;
  }
  
+ void removeSelectedOption(){
+   this.selectedValue = "";
+ }
 }

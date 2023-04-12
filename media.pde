@@ -110,3 +110,7 @@ void fileSelected(File selection) {
     titol = selection.getName();  // Actualitzam títol
   }
 }
+
+String getTitol(){
+  return titol;
+}

@@ -3,6 +3,9 @@ void mousePressed(){
   if(pantalla==PANTALLA.INICIO){
     cercador.isPressed();
     c.checkButtons();
+    rb1.setEnabled(true);
+    rb2.setEnabled(true);
+    rb3.setEnabled(true);
   }
   
   if(b1.mouseOverButton() && b1.enabled){
@@ -29,6 +32,7 @@ void mousePressed(){
     rb3.setEnabled(false);
     rb2.setEnabled(true);
     rb1.setEnabled(true);
+    pantalla = PANTALLA.LISTAS;
   }
   else if(logIn.mouseOverButton() && logIn.enabled){
     if(comprovaLogin()){
@@ -47,6 +51,13 @@ void mousePressed(){
     genere.toggle();        // Plegar o desplegar
   }
   
+  if(estado.mouseOverSelect() && estado.enabled){
+    if(!estado.collapsed){
+      estado.update();    // Fer acció amb valor
+    }
+    estado.toggle();        // Plegar o desplegar
+  }
+  
   if(portada.mouseOverButton() && portada.enabled){
     // Obrim el dialeg
     selectInput("Selecciona una imatge ...", "fileSelected");
@@ -59,6 +70,23 @@ void mousePressed(){
   if(pantalla_addMovie.mouseOverButton() && pantalla_addMovie.enabled){
     bgColor = color(255, 0, 0);
     pantalla = PANTALLA.ADD_MOVIE;
+  }
+  
+  if(seen.mouseOverButton() && seen.enabled){
+    pantalla = PANTALLA.PELIS_VISTAS;
+  }
+  
+  if(to_see.mouseOverButton() && to_see.enabled){
+    pantalla = PANTALLA.PELIS_PENDIENTES;
+  }
+  
+  if(buscar.mouseOverButton() && buscar.enabled){
+    String [][] info = getInfoTablaCensoBuscar(buscar.getValue());
+    stCenso = new SelectTable(filasCenso, columnasCenso, 20+menuWidth, 285, 1280-menuWidth-40, 410);
+    stCenso.setHeaders(headersCenso);
+    stCenso.setData(info);
+    stCenso.setColumnWidths(colWidthsCenso);
+    stCenso.setColumnMaxChars(maxCharsCenso);
   }
   
   userText.isPressed();
@@ -83,26 +111,23 @@ void mousePressed(){
      String valorNom = addNameMovie.getValue();
      String valorDirector = addNameDirector.getValue();
      String valorGenero = genere.selectedValue();
-     int numEstrellas = estrelletes.getNumSelected();    
+     int numEstrellas = estrelletes.getNumSelected();  
+     String valorEstado = estado.selectedValue();
+     String portadaName = getTitol();
      
     // Inserir a la BBDD
     
     // Resetear camps del formulari    
-    insertInfoTaulapelicula(valorNom, valorYear, valorDirector, valorGenero, numEstrellas);
+    insertInfoTaulapelicula(valorNom, valorYear, portadaName, valorDirector, valorGenero, numEstrellas, valorEstado);
     p.setVisible(true);
-    resetFormulari();
-    
-  }
-  
-  
-  else if(crearMovie.mouseOverButton() && crearMovie.enabled){
-    // Resetear camps del formulari
+    p.setEnabled(true);
     resetFormulari();
     
   }
   
   if(p.bAceptar.mouseOverButton() && p.bAceptar.enabled){
     p.setVisible(false);
+    p.setEnabled(false);
     pantalla = PANTALLA.INICIO;
   }
   else {
@@ -115,6 +140,9 @@ void resetFormulari(){
     anys.resetValue();
     addNameMovie.removeAllText();
     addNameDirector.removeAllText();
+    genere.removeSelectedOption();
+    estado.removeSelectedOption();
+    
 }
   
 

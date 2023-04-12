@@ -40,6 +40,7 @@ void dibujaPantallaInicio(){
     c.display();
     updateCursor();
     //peli.display(100,100,500,300,1);
+    buscar.display();
     
   }
   
@@ -48,6 +49,8 @@ void dibujaPantallaInicio(){
 void dibujaPantallaAddButton(){
   
   if(pantalla == PANTALLA.ADD_BUTTON){
+    
+    pushStyle();
     
     portada.setEnabled(false);
     p.setVisible(false);
@@ -60,7 +63,7 @@ void dibujaPantallaAddButton(){
     pantalla_addMovie.setEnabled(true);
     updateCursor();
 
-      
+    popStyle();
   }
   
 }
@@ -95,28 +98,30 @@ void dibujaPantallaAddMovie(){
   if(pantalla == PANTALLA.ADD_MOVIE){
     pushStyle();
     
-    portada.setEnabled(true);
-    p.display();
-    p.setEnabled(true);
     p.setVisible(false);
+    portada.setEnabled(true);
     rectMode(CENTER);
     fill(getFirstColor());
     rect(width/2, height/2+40, 800, 480, 20);
     
     crearMovie.display();
     fill(getThirdColor()); textFont(getFontAt(1)); textSize(20); textAlign(LEFT);
-    text("TÍTULO", width/2-60, 245);
+    text("TÍTULO", width/2-60, 235);
     addNameMovie.display();
-    text("DIRECTOR", width/2-60, 330);
-    text("AÑO", width/2-60, height/2+45);
+    text("DIRECTOR", width/2-60, 310);
+    text("AÑO", width/2-60, height/2+60);
+    text("ESTADO", width/2-60, height/2+15);
     addNameDirector.display();
-    text("GÉNERO", width/2-60, height/2+100);
+    text("GÉNERO", width/2-60, height/2+110);
     text("PUNTUACIÓN", width/2-60, height/2+170);
     estrelletes.display();
     anys.display();
     portada.display();
     genere.display();
+    estado.display();
     
+    p.display();
+    p.setEnabled(true);
     
     
     updateCursor();
@@ -166,5 +171,67 @@ void dibujaPantallaMovieCard(){
     fill(0); textSize(18); textFont(getFontAt(2));
     text("(foto)", 390, 320);
     
+  }
+}
+
+void dibujaPantallaListas(){
+  if(pantalla == PANTALLA.LISTAS){
+    pushStyle();
+    
+    portada.setEnabled(false);
+    
+    fill(getFirstColor());
+    rect(0, 121, 250, 645);
+    
+    seen.display();
+    to_see.display();
+    //liked.display();
+    
+    popStyle();
+  }
+}
+
+void dibujaPantallaVistas(){
+  if(pantalla == PANTALLA.PELIS_VISTAS){
+    pushStyle();
+    
+    portada.setEnabled(false);
+    
+    fill(getFirstColor());
+    rect(0, 121, 250, 645);
+    
+    seen.display();
+    to_see.display();
+    //liked.display();
+    
+    fill(getThirdColor()); stroke(getFirstColor()); strokeWeight(2);
+    rect(260, 131, 1090, 200);
+    rect(260, 131+200, 1090, 200);
+    rect(260, 131+400, 1090, 200);
+    
+    popStyle();
+    
+  }
+}
+
+void dibujaPantallaPendientes(){
+  if(pantalla == PANTALLA.PELIS_PENDIENTES){
+    pushStyle();
+    
+    portada.setEnabled(false);
+    
+    fill(getFirstColor());
+    rect(0, 121, 250, 645);
+    
+    seen.display();
+    to_see.display();
+    //liked.display();
+ 
+    fill(getThirdColor()); stroke(getFirstColor()); strokeWeight(2);  
+    rect(260, 131, 1090, 200);
+    rect(260, 131+200, 1090, 200);
+    rect(260, 131+400, 1090, 200);
+    
+    popStyle();
   }
 }
