@@ -57,11 +57,11 @@ class DataTable {
     
     pushStyle();
     
-    fill(255); stroke(0);strokeWeight(3);
+    fill(getThirdColor()); stroke(0);strokeWeight(3);
     rect(x, y, w, h);
     
     float rowHeight = h / numRows;
-    fill(155, 55, 155); stroke(0);strokeWeight(3);
+    fill(getFirstColor()); stroke(0);strokeWeight(3);
     rect(x, y, w, rowHeight);
     
     // Dibuixa files
@@ -69,6 +69,7 @@ class DataTable {
     for(int r = 1; r <numRows; r++){
       if(r==1){ strokeWeight(3); }
       else {    strokeWeight(1); }
+      fill(getFirstColor());
       line(x, y + r*rowHeight, x + w, y + r*rowHeight);
     }
     
@@ -76,20 +77,23 @@ class DataTable {
     float xCol = x;
     for(int c = 0; c<numCols; c++){
       xCol += w*columnWidths[c]/100.0;
+      fill(getFirstColor());
       line(xCol, y, xCol, y + h);
     }
     
     // Dibuixa textos
-    fill(0); textSize(34);
+    fill(0); textSize(30); textAlign(LEFT);
     for(int r = 0; r < numRows; r++){
       xCol = x;
       for(int c = 0; c< numCols; c++){
         if(r==0){
+          fill(getThirdColor()); textFont(getFontAt(1));
           text(tableHeaders[c], xCol + 10, y + (r+1)*rowHeight - 15);
         }
         else{
           int k = (numRows-1)*numPage + (r-1);
           if(k<tableData.length){
+            fill(0);  textFont(getFontAt(2)); textSize(20);
             text(tableData[k][c], xCol + 10, y + (r+1)*rowHeight - 15);
           }
         }

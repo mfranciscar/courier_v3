@@ -68,31 +68,6 @@ void dibujaPantallaAddButton(){
   
 }
 
-void dibujaPantallaAddLista(){
-  if(pantalla == PANTALLA.ADD_LISTA){
-    pushStyle();
-    
-    println(mouseX, mouseY);
-    rectMode(CENTER);
-    fill(getFirstColor());
-    rect(width/2, height/2+50, 800, 400, 20);
-    fill(getThirdColor()); textFont(getFontAt(1)); textSize(20); textAlign(LEFT);
-    text("NUEVA LISTA", width/2, 290);
-    text("DESCRIPCIÓN (opcional)", width/2, 390);
-    crearLista.display();
-    addNameList.display();
-    addDescription.display();
-    addNameList.isPressed();
-    addDescription.isPressed();
-    fill(getFirstColor()); textFont(getFontAt(1)); textSize(18); textAlign(LEFT);
-    text("Crear lista",width/2+58, height/2+205);
-    fill(getThirdColor());
-    rectMode(LEFT);
-    rect(330, 280, 570, 580, 10);
-    
-    popStyle();
-  }
-}
 
 void dibujaPantallaAddMovie(){
   if(pantalla == PANTALLA.ADD_MOVIE){
@@ -202,14 +177,9 @@ void dibujaPantallaVistas(){
     
     seen.display();
     to_see.display();
-    //liked.display();
     
-    fill(getThirdColor()); stroke(getFirstColor()); strokeWeight(2);
-    rect(260, 131, 1090, 200);
-    rect(260, 131+200, 1090, 200);
-    rect(260, 131+400, 1090, 200);
-    
-    t.display(250,250,tableW, tableH);
+    vistas.display(260, 131, 1090, 600);
+    next.display(); prev.display();
     
     popStyle();
     
@@ -227,12 +197,9 @@ void dibujaPantallaPendientes(){
     
     seen.display();
     to_see.display();
-    //liked.display();
- 
-    fill(getThirdColor()); stroke(getFirstColor()); strokeWeight(2);  
-    rect(260, 131, 1090, 200);
-    rect(260, 131+200, 1090, 200);
-    rect(260, 131+400, 1090, 200);
+    
+    pendientes.display(260, 131, 1090, 600);
+    next.display(); prev.display();
     
     popStyle();
   }

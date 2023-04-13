@@ -25,7 +25,7 @@ void mousePressed(){
     rb2.setEnabled(false);
     rb1.setEnabled(true);
     rb3.setEnabled(true);
-    pantalla = PANTALLA.ADD_BUTTON;
+    pantalla = PANTALLA.ADD_MOVIE;
   }
   
   else if(rb3.mouseOverButton() && rb3.enabled){
@@ -61,10 +61,6 @@ void mousePressed(){
   if(portada.mouseOverButton() && portada.enabled){
     // Obrim el dialeg
     selectInput("Selecciona una imatge ...", "fileSelected");
-  }
-  
-  if(pantalla_addLista.mouseOverButton() && pantalla_addLista.enabled){
-    pantalla = PANTALLA.ADD_LISTA;
   }
   
   if(pantalla_addMovie.mouseOverButton() && pantalla_addMovie.enabled){
@@ -125,6 +121,13 @@ void mousePressed(){
     p.setVisible(true);
   }
   
+    if(next.mouseOverButton() && next.enabled){
+    vistas.nextPage();
+  }
+  // Si pitjam el botó PREVIOUS
+  else if(prev.mouseOverButton() && prev.enabled){
+    vistas.prevPage();
+  }
 }
 
 void resetFormulari(){
@@ -186,10 +189,7 @@ void keyPressed() {
            c.next();
        }
     }
-    else if(pantalla == PANTALLA.ADD_LISTA){
-       addNameList.keyPressed(key, (int)keyCode);
-       addDescription.keyPressed(key, (int)keyCode);
-    }
+   
     else if(pantalla == PANTALLA.ADD_MOVIE){
        addNameMovie.keyPressed(key, (int)keyCode);
        addNameDirector.keyPressed(key, (int)keyCode);

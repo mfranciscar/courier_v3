@@ -1,5 +1,5 @@
-enum PANTALLA {INICIO, LOG_IN, ADD_LISTA, ADD_MOVIE, MOVIE_CARD, ADD_BUTTON, LISTAS, PELIS_VISTAS, PELIS_PENDIENTES};
-PANTALLA pantalla = PANTALLA.PELIS_VISTAS;
+enum PANTALLA {INICIO, LOG_IN, ADD_MOVIE, MOVIE_CARD, ADD_BUTTON, LISTAS, PELIS_VISTAS, PELIS_PENDIENTES};
+PANTALLA pantalla = PANTALLA.LISTAS;
 
 void setup(){
   fullScreen();
@@ -7,8 +7,8 @@ void setup(){
   setColors();
   setFonts();
   textAlign(CENTER);
-  setGUI();
   conexionBBDD();
+  setGUI();
   fullScreen();
 }
 
@@ -23,8 +23,6 @@ void draw(){
   case INICIO:
     dibujaPantallaInicio();
     break;
-  case ADD_LISTA:
-    dibujaPantallaAddLista(); 
   case ADD_MOVIE:
     dibujaPantallaAddMovie();
   case MOVIE_CARD:

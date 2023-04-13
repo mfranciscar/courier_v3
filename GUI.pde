@@ -25,12 +25,14 @@ String[] noms = {"seven.png", "death_proof.png", "fight_club.png",
 int n = 0;
 boolean logged = false;
 
-DataTable t;
-Button next, prev;
+DataTable vistas, pendientes;
+SquareButton next, prev;
 float tableW = 950, tableH = 300;
-int files = 5, columnes = 2;
-String[] headers = {"Película", "Director"};
-float[] colWidths = {20, 80};
+int files = 10, columnesV = 5, columnesP = 4;
+String[] headersVistas = {"Película", "Director", "Año", "Género", "Valoración"};
+String[] headersPendientes = {"Película", "Director", "Año", "Género"};
+float[] colWidthsV = {23, 30, 9, 18, 20};
+float[] colWidthsP = {35, 35, 10, 20};
 int compW = 200, compH = 80;
 float popW = 600, popH = 340;
 float confW = 600, confH = 340;
@@ -73,7 +75,7 @@ void setGUI(){
   genere = new Select(genero, width/2+75, height/2+85, selectW, selectH);
   estado = new Select(estat, width/2+75, height/2-5, selectW, selectH);
   
-  c = new Carrousel(width/2-565, height/2+30, 1100, 380, 4);
+  c = new Carrousel(width/2-565, height/2+30, 1100, 400, 4);
   c.setImages(noms);
   c.setButtons("bPrev.png", "bNext.png");
   
@@ -94,12 +96,17 @@ void setGUI(){
   
   
   String[][]info = getInfoTaulapelicula();
-  t = new DataTable(files, columnes);
-  t.setHeaders(headers);
-  t.setData(info);
-  t.setColumnWidths(colWidths);
-  next = new Button("NEXT", 25 + tableW, 240 + tableH, buttonW, buttonH);
-  prev = new Button("PREV", 25 + tableW - buttonW*1.5, 240 + tableH, buttonW, buttonH);
+  vistas = new DataTable(files, columnesV);
+  vistas.setHeaders(headersVistas);
+  vistas.setData(info);
+  vistas.setColumnWidths(colWidthsV);
+  next = new SquareButton("NEXT", 61+250/2, 700, 250/2-2, buttonH);
+  prev = new SquareButton("PREV", 62, 700, 250/2-2, buttonH);
+  
+  pendientes = new DataTable(files, columnesP);
+  pendientes.setHeaders(headersVistas);
+  pendientes.setData(info);
+  pendientes.setColumnWidths(colWidthsP);
   
   popStyle();
   
