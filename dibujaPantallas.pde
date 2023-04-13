@@ -209,6 +209,8 @@ void dibujaPantallaVistas(){
     rect(260, 131+200, 1090, 200);
     rect(260, 131+400, 1090, 200);
     
+    t.display(250,250,tableW, tableH);
+    
     popStyle();
     
   }

@@ -80,15 +80,6 @@ void mousePressed(){
     pantalla = PANTALLA.PELIS_PENDIENTES;
   }
   
-  if(buscar.mouseOverButton() && buscar.enabled){
-    String [][] info = getInfoTablaCensoBuscar(buscar.getValue());
-    stCenso = new SelectTable(filasCenso, columnasCenso, 20+menuWidth, 285, 1280-menuWidth-40, 410);
-    stCenso.setHeaders(headersCenso);
-    stCenso.setData(info);
-    stCenso.setColumnWidths(colWidthsCenso);
-    stCenso.setColumnMaxChars(maxCharsCenso);
-  }
-  
   userText.isPressed();
   passwordText.isPressed();
   addNameList.isPressed();

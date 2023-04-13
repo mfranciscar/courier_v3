@@ -25,11 +25,17 @@ String[] noms = {"seven.png", "death_proof.png", "fight_club.png",
 int n = 0;
 boolean logged = false;
 
-
 DataTable t;
+Button next, prev;
+float tableW = 950, tableH = 300;
+int files = 5, columnes = 2;
+String[] headers = {"Película", "Director"};
 float[] colWidths = {20, 80};
-int files = 3, columnes = 2;
-String[] headers = {"Número", "Unitat"};
+int compW = 200, compH = 80;
+float popW = 600, popH = 340;
+float confW = 600, confH = 340;
+float buttonW = 120, buttonH = 60;
+
 
 void setGUI(){
   
@@ -85,6 +91,15 @@ void setGUI(){
   seen = new SquareButton("Vistas", 124, 170, 249, 35);
   to_see = new SquareButton("Pendientes", 124, 210, 249, 35);
   liked = new SquareButton("Me gustan", 124, 250, 249, 35);
+  
+  
+  String[][]info = getInfoTaulapelicula();
+  t = new DataTable(files, columnes);
+  t.setHeaders(headers);
+  t.setData(info);
+  t.setColumnWidths(colWidths);
+  next = new Button("NEXT", 25 + tableW, 240 + tableH, buttonW, buttonH);
+  prev = new Button("PREV", 25 + tableW - buttonW*1.5, 240 + tableH, buttonW, buttonH);
   
   popStyle();
   
