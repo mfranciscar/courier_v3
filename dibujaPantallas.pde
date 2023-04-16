@@ -36,37 +36,15 @@ void dibujaPantallaInicio(){
     
     portada.setEnabled(false);
     p.setVisible(false);
-    cercador.display();
     c.display();
-    updateCursor();
-    //peli.display(100,100,500,300,1);
+    
+    cercador.display();
     buscar.display();
-    
-  }
-  
-}
-
-void dibujaPantallaAddButton(){
-  
-  if(pantalla == PANTALLA.ADD_BUTTON){
-    
-    pushStyle();
-    
-    portada.setEnabled(false);
-    p.setVisible(false);
-    cercador.display();
-    c.display();
-    pantalla_addLista.display();
-    pantalla_addMovie.display();
-    
-    pantalla_addLista.setEnabled(true);
-    pantalla_addMovie.setEnabled(true);
     updateCursor();
-
-    popStyle();
   }
   
 }
+
 
 
 void dibujaPantallaAddMovie(){
@@ -120,31 +98,30 @@ void dibujaPantallaMovieCard(){
     
     portada.setEnabled(false);
     
-    rectMode(CENTER);
     fill(getFirstColor());
-    rect(width/2, height/2+50, 800, 400, 20);
+    rect(0, 121, 250, 645);
     
-    crearMovie.display();
-    fill(getFirstColor()); textFont(getFontAt(1)); textSize(18); textAlign(LEFT);
-    text("Crear película",width/2+42, height/2+205);
+    seen.display();
+    to_see.display();
     
-    fill(getThirdColor()); textFont(getFontAt(1)); textSize(20); textAlign(LEFT);
-    text("TÍTULO", width/2-50, 280);
-    addNameMovie.display();
-    text("DIRECTOR:", width/2-50, 360);
-    text("AÑO:", width/2-50, height/2+85);
-    addNameDirector.display();
-    text("GÉNERO:", width/2-50, height/2+140);
+    rectMode(CORNER);
+    fill(getThirdColor()); stroke(getFirstColor()); strokeWeight(3);
+    rect(330, 170, 950, 530);
+    String prova = "seven.png";
+    PImage prova1 = loadImage(prova);
+    textAlign(LEFT);
+    textFont(getSecondFont()); fill(0); textSize(34); 
+    text("Título: Seven", 750, 250);
+    textFont(getFontAt(2)); fill(0); textSize(25);
+    text("Director: David Fincher", 750, 300);
+    text("Año de publicación: 1995", 750, 360);
+    text("Género: Drama", 750, 420);
+    text("Valoración:", 750, 480);
+    rectMode(CORNER);
+    image(prova1, 550, 430, 300, 420);
+    valor.display();
     
-    anys.display();
-    genere.display();
-    updateCursor();
     popStyle();
-    
-    rectMode(LEFT);
-    rect(330, 280, 570, 580, 10);
-    fill(0); textSize(18); textFont(getFontAt(2));
-    text("(foto)", 390, 320);
     
   }
 }
@@ -160,7 +137,11 @@ void dibujaPantallaListas(){
     
     seen.display();
     to_see.display();
-    //liked.display();
+    
+    cercador.display();
+    buscar.display();
+    
+    updateCursor();
     
     popStyle();
   }
@@ -178,8 +159,15 @@ void dibujaPantallaVistas(){
     seen.display();
     to_see.display();
     
+    Seven.display();
+    
     vistas.display(260, 131, 1090, 600);
     next.display(); prev.display();
+    
+    cercador.display();
+    buscar.display();
+    
+    updateCursor();
     
     popStyle();
     
@@ -200,6 +188,11 @@ void dibujaPantallaPendientes(){
     
     pendientes.display(260, 131, 1090, 600);
     next.display(); prev.display();
+    
+    cercador.display();
+    buscar.display();
+    
+    updateCursor();
     
     popStyle();
   }

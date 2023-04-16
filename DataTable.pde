@@ -103,7 +103,7 @@ class DataTable {
     
     // Informació de la Pàgina
     fill(0);
-    text("Pag: "+(this.numPage+1)+" / "+(this.numTotalPages+1), x, y + h + 50);
+    text("Pag: "+(this.numPage+1)+" / "+(this.numTotalPages+1), x, y + h + 100);
     
     popStyle();
   }

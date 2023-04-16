@@ -8,6 +8,8 @@ void mousePressed(){
     rb3.setEnabled(true);
   }
   
+  cercador.isPressed();
+  
   if(b1.mouseOverButton() && b1.enabled){
     bgColor = color(255, 0, 0);
     pantalla = PANTALLA.INICIO;
@@ -76,6 +78,11 @@ void mousePressed(){
     pantalla = PANTALLA.PELIS_PENDIENTES;
   }
   
+  if(Seven.mouseOverButton() && Seven.enabled){
+    bgColor = color(255, 0, 0);
+    pantalla = PANTALLA.MOVIE_CARD;
+  }
+  
   userText.isPressed();
   passwordText.isPressed();
   addNameList.isPressed();
@@ -85,7 +92,6 @@ void mousePressed(){
   addNameDirector.isPressed();
   addActors.isPressed();
   
-  updateCursor();
   
   anys.update();
   estrelletes.checkMouse();
@@ -112,6 +118,15 @@ void mousePressed(){
     
   }
   
+  /*if(buscar.mouseOverButton() && buscar.enabled){
+    String [][] info = getInfoTablaPeliculaBuscar(cercador.getValue());
+    pelicula = new SelectTable(filasCenso, columnasCenso, 20+menuWidth, 285, 1280-menuWidth-40, 410);
+    pelicula.setHeaders(headersCenso);
+    pelicula.setData(info);
+    pelicula.setColumnWidths(colWidthsCenso);
+    pelicula.setColumnMaxChars(maxCharsCenso);
+  }*/
+  
   if(p.bAceptar.mouseOverButton() && p.bAceptar.enabled){
     p.setVisible(false);
     p.setEnabled(false);
@@ -120,7 +135,6 @@ void mousePressed(){
   else {
     p.setVisible(true);
   }
-  
     if(next.mouseOverButton() && next.enabled){
     vistas.nextPage();
   }
@@ -180,7 +194,7 @@ void keyPressed() {
        userText.keyPressed(key, (int)keyCode);
        passwordText.keyPressed(key, (int)keyCode);
     }
-    else if(pantalla == PANTALLA.INICIO){
+    else if(pantalla == PANTALLA.INICIO || pantalla == PANTALLA.PELIS_VISTAS || pantalla == PANTALLA.PELIS_PENDIENTES){
        cercador.keyPressed(key, (int)keyCode);
        if (keyCode==LEFT){
            c.prev();
@@ -190,13 +204,15 @@ void keyPressed() {
        }
     }
    
-    else if(pantalla == PANTALLA.ADD_MOVIE){
+    else if(pantalla == PANTALLA.ADD_MOVIE || pantalla == PANTALLA.PELIS_VISTAS || pantalla == PANTALLA.PELIS_PENDIENTES){
        addNameMovie.keyPressed(key, (int)keyCode);
        addNameDirector.keyPressed(key, (int)keyCode);
        addActors.keyPressed(key, (int)keyCode);
     }
        comprovaLogin();
        
+       
+    updateCursor();
     
 }
 

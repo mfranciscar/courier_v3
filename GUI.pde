@@ -1,6 +1,6 @@
 Button b1;
 RoundButton rb1, rb2, rb3, buscar;
-SquareButton logIn, crearLista, crearMovie, portada, pantalla_addLista, pantalla_addMovie;
+SquareButton logIn, crearLista, crearMovie, portada, pantalla_addLista, pantalla_addMovie, Seven;
 SquareButton seen, to_see, liked;
 color bgColor = 0;
 PImage img, img1, icona1, icona2, icona3, icona4;
@@ -15,7 +15,7 @@ PopUp p;
 String title = "Operación realizada";
 String message = "La película se ha añadido correctamente.";
 
-CheckBoxStarList estrelletes;
+CheckBoxStarList estrelletes, valor;
 String[] imgs = {"starON.png", "starOFF.png"};
 
 String[] noms = {"seven.png", "death_proof.png", "fight_club.png",
@@ -37,6 +37,8 @@ int compW = 200, compH = 80;
 float popW = 600, popH = 340;
 float confW = 600, confH = 340;
 float buttonW = 120, buttonH = 60;
+
+String estado1 = "Vista";
 
 
 void setGUI(){
@@ -82,6 +84,9 @@ void setGUI(){
   estrelletes = new CheckBoxStarList(5, imgs, width/2+80, height/2 + 140, 40, 40);
   estrelletes.setCheckBoxStars(3);
   
+  valor = new CheckBoxStarList(5, imgs, 930, 450, 40, 40);
+  valor.setCheckBoxStars(5);
+  
   portada = new SquareButton("Añadir imagen", width/2-230, height/2+40, 260, 400);
   
   p = new PopUp(title, message, width/2, height/2+20, 500, 300);
@@ -95,7 +100,7 @@ void setGUI(){
   liked = new SquareButton("Me gustan", 124, 250, 249, 35);
   
   
-  String[][]info = getInfoTaulapelicula();
+  String[][]info = getInfoTaulaPeliculaVistas();
   vistas = new DataTable(files, columnesV);
   vistas.setHeaders(headersVistas);
   vistas.setData(info);
@@ -107,6 +112,8 @@ void setGUI(){
   pendientes.setHeaders(headersVistas);
   pendientes.setData(info);
   pendientes.setColumnWidths(colWidthsP);
+  
+  Seven = new SquareButton("", 400, 230, 230, 50);
   
   popStyle();
   

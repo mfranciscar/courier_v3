@@ -46,7 +46,7 @@ int getNumRowsTaula(String nomTaula){
 }
   
 // Obté informació de la taula Unitat
-String[][] getInfoTaulapelicula(){
+String[][] getInfoTaulaPeliculaVistas(){
   
   int numRows = getNumRowsTaula("pelicula");
   
@@ -64,4 +64,39 @@ String[][] getInfoTaulapelicula(){
 
   }
   return data;
+}
+
+String[][] getInfoTablaPeliculaBuscar(String buscar) {
+
+  String q2 = "SELECT COUNT(*) AS n FROM pelicula WHERE PeliculaNom LIKE '%"+buscar+"%'";
+  int numRows = getNumRowsQuery(q2);
+  println("NR:"+numRows);
+
+  if (numRows>0) {
+    String[][] data = new String[numRows][5];
+
+    String q = "SELECT `PeliculaNom`, `Director_directorName`, `Año`, `Genero_Genero`, `valoracion`  FROM pelicula WHERE PeliculaNom LIKE '%"+buscar+"%'";
+    int nr=0;
+    msql.query(q);
+    while (msql.next()) {
+      data[nr][0] = msql.getString("PeliculaNom");
+      data[nr][1] = msql.getString("Director_directorName");
+      data[nr][2] = String.valueOf(msql.getInt("Año"));
+      data[nr][3] = msql.getString("Genero_Genero");
+      data[nr][4] = String.valueOf(msql.getInt("valoracion"));
+      nr++;
+    }
+    return data;
+  } else {
+    String[][] array = new String[5][5];
+
+    // Rellenar el array con strings vacíos
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 5; j++) {
+        array[i][j] = "";
+      }
+    }
+
+    return array;
+  }
 }
