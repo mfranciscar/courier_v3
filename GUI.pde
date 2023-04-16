@@ -25,7 +25,7 @@ String[] noms = {"seven.png", "death_proof.png", "fight_club.png",
 int n = 0;
 boolean logged = false;
 
-DataTable vistas, pendientes;
+SelectTable vistas, pendientes;
 SquareButton next, prev;
 float tableW = 950, tableH = 300;
 int files = 10, columnesV = 5, columnesP = 4;
@@ -33,12 +33,12 @@ String[] headersVistas = {"Película", "Director", "Año", "Género", "Valoraci�
 String[] headersPendientes = {"Película", "Director", "Año", "Género"};
 float[] colWidthsV = {23, 30, 9, 18, 20};
 float[] colWidthsP = {35, 35, 10, 20};
+int[] maxCaractersV = {100, 100, 100, 100, 100};
+int[] maxCaractersP = {100, 100, 100, 100, 100};
 int compW = 200, compH = 80;
 float popW = 600, popH = 340;
 float confW = 600, confH = 340;
 float buttonW = 120, buttonH = 60;
-
-String estado1 = "Vista";
 
 
 void setGUI(){
@@ -63,7 +63,7 @@ void setGUI(){
   logIn = new SquareButton("Iniciar sesión", width/2, height/2+200, 250, 35);
   
   addNameList = new TextField(width/2-60, 300, 380, 35);
-  addDescription = new TextArea(width/2-60, 420, 380, 100, 35, 3);
+  //addDescription = new TextArea(width/2-60, 420, 380, 100, 35, 3);
   crearLista = new SquareButton("Crear lista", width/2+120, height/2+200, 200, 35);
   
   iconaMes = loadImage("mes.png");
@@ -101,17 +101,19 @@ void setGUI(){
   
   
   String[][]info = getInfoTaulaPeliculaVistas();
-  vistas = new DataTable(files, columnesV);
+  vistas = new SelectTable(files, columnesV, 260, 131, 1090, 600);
   vistas.setHeaders(headersVistas);
-  vistas.setData(info);
+  vistas.setData(getInfoTaulaPeliculaVistas());
   vistas.setColumnWidths(colWidthsV);
+  vistas.setColumnMaxChars(maxCaractersV);
   next = new SquareButton("NEXT", 61+250/2, 700, 250/2-2, buttonH);
   prev = new SquareButton("PREV", 62, 700, 250/2-2, buttonH);
   
-  pendientes = new DataTable(files, columnesP);
+  pendientes = new SelectTable(files, columnesP, 260, 131, 1090, 600);
   pendientes.setHeaders(headersVistas);
-  pendientes.setData(info);
+  pendientes.setData(getInfoTaulaPeliculaPendientes());
   pendientes.setColumnWidths(colWidthsP);
+  pendientes.setColumnMaxChars(maxCaractersP);
   
   Seven = new SquareButton("", 400, 230, 230, 50);
   

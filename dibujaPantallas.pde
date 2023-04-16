@@ -1,6 +1,5 @@
 TextField userText, passwordText, cercador;
 TextField addNameList, addNameMovie, addNameDirector, addActors;
-TextArea addDescription;
 
 void dibujaPantallaLogIn(){
   pushStyle();
@@ -159,9 +158,9 @@ void dibujaPantallaVistas(){
     seen.display();
     to_see.display();
     
-    Seven.display();
+    //Seven.display();
     
-    vistas.display(260, 131, 1090, 600);
+    vistas.display();
     next.display(); prev.display();
     
     cercador.display();
@@ -186,7 +185,7 @@ void dibujaPantallaPendientes(){
     seen.display();
     to_see.display();
     
-    pendientes.display(260, 131, 1090, 600);
+    pendientes.display();
     next.display(); prev.display();
     
     cercador.display();

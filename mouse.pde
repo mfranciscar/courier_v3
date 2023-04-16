@@ -88,7 +88,7 @@ void mousePressed(){
   addNameList.isPressed();
   
   addNameMovie.isPressed();
-  addDescription.isPressed();
+  //addDescription.isPressed();
   addNameDirector.isPressed();
   addActors.isPressed();
   
@@ -118,14 +118,14 @@ void mousePressed(){
     
   }
   
-  /*if(buscar.mouseOverButton() && buscar.enabled){
+  if(buscar.mouseOverButton() && buscar.enabled){
     String [][] info = getInfoTablaPeliculaBuscar(cercador.getValue());
-    pelicula = new SelectTable(filasCenso, columnasCenso, 20+menuWidth, 285, 1280-menuWidth-40, 410);
-    pelicula.setHeaders(headersCenso);
-    pelicula.setData(info);
-    pelicula.setColumnWidths(colWidthsCenso);
-    pelicula.setColumnMaxChars(maxCharsCenso);
-  }*/
+    vistas = new SelectTable(files, columnesV, 260, 131, 1090, 600);
+    vistas.setHeaders(headersVistas);
+    vistas.setData(info);
+    vistas.setColumnWidths(colWidthsV);
+    vistas.setColumnMaxChars(maxCaractersV);
+  }
   
   if(p.bAceptar.mouseOverButton() && p.bAceptar.enabled){
     p.setVisible(false);

@@ -102,7 +102,10 @@ class SelectTable {
 
     // Dibuixa textos
     fill(0);
+    textFont(getFontAt(2));
+    textAlign(LEFT);
     textSize(24);
+    fill(0);
     for (int r = 0; r < numRows; r++) {
       xCol = x;
       for (int c = 0; c< numCols; c++) {
@@ -122,6 +125,7 @@ class SelectTable {
             } else {
               fill(0);
             }
+            fill(0); textSize(20);
             text(t, xCol + 10, y + (r+1)*rowHeight - 10);
           }
         }

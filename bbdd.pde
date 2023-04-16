@@ -53,7 +53,27 @@ String[][] getInfoTaulaPeliculaVistas(){
   String[][] data = new String[numRows][5];
   
     int nr=0;
-    msql.query("SELECT `PeliculaNom`, `Director_directorName`, `Año`, `Genero_Genero`, `valoracion` FROM `pelicula`");
+    msql.query("SELECT * FROM pelicula WHERE estado = 'Vista'");
+    while (msql.next()){
+        data[nr][0] = msql.getString("PeliculaNom");
+        data[nr][1] = msql.getString("Director_directorName");
+        data[nr][2] = String.valueOf(msql.getInt("Año"));
+        data[nr][3] = msql.getString("Genero_Genero");
+        data[nr][4] = String.valueOf(msql.getInt("valoracion"));
+        nr++;
+
+  }
+  return data;
+}
+
+String[][] getInfoTaulaPeliculaPendientes(){
+  
+  int numRows = getNumRowsTaula("pelicula");
+  
+  String[][] data = new String[numRows][5];
+  
+    int nr=0;
+    msql.query("SELECT * FROM pelicula WHERE estado = 'Pendiente'");
     while (msql.next()){
         data[nr][0] = msql.getString("PeliculaNom");
         data[nr][1] = msql.getString("Director_directorName");
